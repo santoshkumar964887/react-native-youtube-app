@@ -1,17 +1,29 @@
 import React from "react";
-import { View, Text,StyleSheet} from "react-native";
+import { View, Text,StyleSheet,ScrollView} from "react-native";
+import HomeCard from '../components/homeCard';
 import Header from "../components/Header";
 export default HomePage = () => {
   return (
-    <View>
+    <View style={styles.home}>
       <Header />
-      <Text style={styles.home}>Hello</Text>
+      <ScrollView>
+      
+        <HomeCard/>
+        <HomeCard/>
+        <HomeCard/>
+        <HomeCard/>
+        <HomeCard/>
+        <HomeCard/>
+        <HomeCard/>
+        <HomeCard/>
+        
+        
+      </ScrollView>
     </View>
   );
 };
 const styles=StyleSheet.create({
-    home:{
-      textAlign:"center",
-      margin: 75
-    }
+   home:{
+    
+   }
 })
