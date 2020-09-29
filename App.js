@@ -25,7 +25,7 @@ const Root=()=>{
 }
 export default function App() {
   return (
-  
+ 
       
       <NavigationContainer>
         <stack.Navigator headerMode="none">
@@ -34,8 +34,7 @@ export default function App() {
           <stack.Screen name="player" component={Player} />
         </stack.Navigator>
       </NavigationContainer>
- 
-  );
+  )
 }
 
 const styles = StyleSheet.create({});

@@ -1,10 +1,11 @@
 
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import Header from "../components/Header";
 
-
-export default function App() {
+export default function Explore() {
   return <View >
+    <Header/>
    <Text>from explore</Text>
   </View>;
 }

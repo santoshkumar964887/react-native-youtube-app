@@ -63,6 +63,9 @@ export default Search = () => {
           />
         </View>
       </View>
+      {
+        indicator?<ActivityIndicator color="red" size="large"/>:""
+      }
       <SafeAreaView>
         <FlatList
           data={results}
