@@ -21,7 +21,7 @@ export default Search = () => {
   const fetchingData = () => {
     setIndicator(true);
     fetch(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${text}&type=video&key=AIzaSyAkHz54DifEWSsHb0gSZlTN0HDwUE8Hsxk`
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${text}&type=video&key=zaSyAkHz54DifEWSsHb0gSZlTN0HDwUE8Hsxk`
     )
       .then((res) => res.json())
       .then((res2) => {

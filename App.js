@@ -10,9 +10,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from '@expo/vector-icons';
-
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import {Reducer} from './src/redux/Reducer';
 const stack = createStackNavigator();
 const tab = createBottomTabNavigator();
+const store=createStore(Reducer);
 const Root = () => {
   return (
     <tab.Navigator
@@ -45,6 +48,7 @@ const Root = () => {
 };
 export default function App() {
   return (
+    <Provider store={store}>
     <NavigationContainer>
       <stack.Navigator headerMode="none">
         <stack.Screen name="root" component={Root} />
@@ -52,6 +56,7 @@ export default function App() {
         <stack.Screen name="player" component={Player} />
       </stack.Navigator>
     </NavigationContainer>
+    </Provider>
     
   );
 }
