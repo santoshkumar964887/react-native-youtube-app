@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet,Image,Dimensions } from "react-native";
-export default SearchCard = () => {
+export default SearchCard = (props) => {
+    
   return (
     <View style={styles.searchCardContainer}>
      
@@ -8,7 +9,7 @@ export default SearchCard = () => {
       style={styles.image}
           source={{
             uri:
-              "https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+              `https://i.ytimg.com/vi/${props.videoId}/hqdefault.jpg`,
             height:92,
             width: "40%",
           }}
@@ -16,14 +17,10 @@ export default SearchCard = () => {
       
       <View style={styles.text}>
         <Text style={styles.title} ellipsizeMode="tail" numberOfLines={3}>
-          santosh santosh santosh santosh santosh santosh santosh santossantosh
-          santosh santosh santosh santossantosh santosh santosh santosh
-          santossantosh santosh santosh santosh santossantosh santosh
+          {props.title}
         </Text>
         <Text style={styles.disc} ellipsizeMode="tail" numberOfLines={2}>
-          santosh santosh santosh santosh santosh santosh santossantosh santosh
-          santosh santosh santossantosh santosh santosh santosh santossantosh
-          santosh santosh
+          {props.channel}
         </Text>
       </View>
     </View>
