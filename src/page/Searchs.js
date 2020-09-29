@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput} from "react-native";
+import { View, Text, StyleSheet, TextInput,ScrollView} from "react-native";
 import Constant from "expo-constants";
-import { MaterialIcons, Ionicons, Feather } from "@expo/vector-icons";
+import { MaterialIcons, Ionicons, Feather} from "@expo/vector-icons";
+import SearchCard from '../components/SearchCard';
 export default Search = () => {
   const [text, setText] = useState("");
   return (
@@ -22,6 +23,16 @@ export default Search = () => {
         <Ionicons style={styles.headerRightIcon} name="md-mic" size={24} color="black" />
         </View>
       </View>
+       <ScrollView>
+         <SearchCard/>
+         <SearchCard/>
+         <SearchCard/>
+         <SearchCard/>
+         <SearchCard/>
+         <SearchCard/>
+         <SearchCard/>
+         <SearchCard/>
+       </ScrollView>
     </View>
   );
 };
