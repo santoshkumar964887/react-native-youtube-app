@@ -13,20 +13,27 @@ import Constant from "expo-constants";
 import { MaterialIcons, Ionicons, Feather } from "@expo/vector-icons";
 import SearchCard from "../components/SearchCard";
 import { useNavigation } from '@react-navigation/native';
+import {useDispatch,useSelector} from 'react-redux';
 export default Search = () => {
   const [text, setText] = useState("");
   const navigation = useNavigation();
-  const [results, setresult] = useState([]);
+  //const [results, setresult] = useState([]);
   const [indicator, setIndicator] = useState(false);
+  const dispatch=useDispatch();
+  const results=useSelector(state=>{
+    return state;
+  })
   const fetchingData = () => {
     setIndicator(true);
     fetch(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${text}&type=video&key=zaSyAkHz54DifEWSsHb0gSZlTN0HDwUE8Hsxk`
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${text}&type=video&key=AIzaSyAkHz54DifEWSsHb0gSZlTN0HDwUEsxk`
     )
       .then((res) => res.json())
       .then((res2) => {
         setIndicator(false);
-        setresult(res2.items);
+
+        //setresult(res2.items);
+        dispatch({type:'Add_Search',payload:res2.items});
         setText("");
       });
   };
