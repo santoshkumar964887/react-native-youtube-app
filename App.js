@@ -1,4 +1,4 @@
-import { StatusBar } from "expo-status-bar";
+
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import HomePage from "./src/page/Home";
@@ -28,7 +28,7 @@ const Root = () => {
             iconName = "subscriptions";
           }
 
-          // You can return any component that you like here!
+        
           return <MaterialIcons name={iconName} size={28} color={color} />;
         },
       })}
@@ -52,7 +52,8 @@ export default function App() {
         <stack.Screen name="player" component={Player} />
       </stack.Navigator>
     </NavigationContainer>
+    
   );
 }
 
-const styles = StyleSheet.create({});
+

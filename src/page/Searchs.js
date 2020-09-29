@@ -12,8 +12,10 @@ import {
 import Constant from "expo-constants";
 import { MaterialIcons, Ionicons, Feather } from "@expo/vector-icons";
 import SearchCard from "../components/SearchCard";
+import { useNavigation } from '@react-navigation/native';
 export default Search = () => {
   const [text, setText] = useState("");
+  const navigation = useNavigation();
   const [results, setresult] = useState([]);
   const [indicator, setIndicator] = useState(false);
   const fetchingData = () => {
@@ -37,6 +39,9 @@ export default Search = () => {
             name="keyboard-backspace"
             size={33}
             color="black"
+            onPress={() => {
+              navigation.goBack();
+            }}
           />
           <View>
             <TextInput
@@ -64,7 +69,7 @@ export default Search = () => {
         </View>
       </View>
       {
-        indicator?<ActivityIndicator color="red" size="large"/>:""
+        indicator?<ActivityIndicator color="green" size="large"/>:null
       }
       <SafeAreaView>
         <FlatList

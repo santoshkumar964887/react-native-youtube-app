@@ -4,7 +4,9 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import Constant from "expo-constants";
 import { FontAwesome } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 export default Header = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.headerContainer}>
       <View style={styles.leftIcon}>
@@ -18,7 +20,14 @@ export default Header = () => {
       </View>
       <View style={styles.rightIcons}>
         <FontAwesome name="video-camera" size={26} color="#4A4D4F" />
-        <FontAwesome5 name="search" size={26} color="#4A4D4F" />
+        <FontAwesome5
+          onPress={() => {
+            navigation.navigate('search')
+          }}
+          name="search"
+          size={26}
+          color="#4A4D4F"
+        />
         <MaterialIcons name="account-circle" size={26} color="#4A4D4F" />
       </View>
     </View>
@@ -30,8 +39,8 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-   backgroundColor:"#EEF0F1",
-    elevation:6,
+    backgroundColor: "#EEF0F1",
+    elevation: 6,
   },
   leftIcon: {
     display: "flex",
