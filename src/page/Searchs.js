@@ -23,10 +23,11 @@ export default Search = () => {
   const results=useSelector(state=>{
     return state;
   })
+    const API_KEY="AIzaSyDHkXoVAssCrE2O5InS-nXr62oJRTXqs0E"
   const fetchingData = () => {
     setIndicator(true);
     fetch(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${text}&type=video&key=AIzaSyAkHz54DifEWSsHb0gSZlTN0HDwUEsxk`
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${text}&type=video&key=${API_KEY}`
     )
       .then((res) => res.json())
       .then((res2) => {
@@ -34,6 +35,7 @@ export default Search = () => {
 
         //setresult(res2.items);
         dispatch({type:'Add_Search',payload:res2.items});
+        console.log(res2.items)
         setText("");
       });
   };

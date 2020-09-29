@@ -1,14 +1,14 @@
 import React from "react";
 import { Text, View, Image, StyleSheet,Dimensions } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-export default HomeCard = () => {
+export default HomeCard = (props) => {
   return (
     <View> 
       <View>
         <Image
           source={{
             uri:
-              "https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            `https://i.ytimg.com/vi/${props.videoId}/hqdefault.jpg`,
             height: 200,
             width: "100%",
           }}
@@ -28,14 +28,16 @@ export default HomeCard = () => {
           ellipsizeMode="tail"
           numberOfLines={2}
           >
-            HomeCard HomeCard HomeCard HomeCard HomeCard HomeCard HomeCard
-            HomeCard HomeCard HomeCard HomeCard HomeCard HomeCard HomeCard
-            HomeCard
+            {
+              props.title
+            }
           </Text>
           <Text style={styles.disc}
           numberOfLines={1}
           ellipsizeMode="tail"
-          >HomeCard HomeCard HomeCard HomeCard HomeCard HomeCard HomeCard HomeCard HomeCard HomeCard</Text>
+          >{
+            props.channel
+          }</Text>
         </View>
       </View>
     </View>
