@@ -1,9 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet,Image,Dimensions,TouchableOpacity } from "react-native";
+import {useNavigation} from '@react-navigation/native'
 export default SearchCard = (props) => {
-    
+    const navigation=useNavigation();
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={()=>navigation.navigate('player',{videoId:props.videoId,title:props.title})}>
     <View style={styles.searchCardContainer}>
      
       <Image
