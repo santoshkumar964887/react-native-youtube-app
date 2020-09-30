@@ -1,8 +1,9 @@
 import React from "react";
-import { View, Text, StyleSheet,Image,Dimensions } from "react-native";
+import { View, Text, StyleSheet,Image,Dimensions,TouchableOpacity } from "react-native";
 export default SearchCard = (props) => {
     
   return (
+    <TouchableOpacity>
     <View style={styles.searchCardContainer}>
      
       <Image
@@ -24,6 +25,7 @@ export default SearchCard = (props) => {
         </Text>
       </View>
     </View>
+    </TouchableOpacity>
   );
 };
 
