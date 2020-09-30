@@ -36,7 +36,7 @@ const Root = () => {
         },
       })}
       tabBarOptions={{
-        activeTintColor: "darkred",
+        activeTintColor: "red",
         inactiveTintColor: "gray",
       }}
     >

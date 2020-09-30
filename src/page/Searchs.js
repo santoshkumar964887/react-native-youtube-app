@@ -27,7 +27,7 @@ export default Search = () => {
   const fetchingData = () => {
     setIndicator(true);
     fetch(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${text}&type=video&key=${API_KEY}`
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=100&q=${text}&type=video&key=${API_KEY}`
     )
       .then((res) => res.json())
       .then((res2) => {
@@ -35,7 +35,6 @@ export default Search = () => {
 
         //setresult(res2.items);
         dispatch({type:'Add_Search',payload:res2.items});
-        console.log(res2.items)
         setText("");
       });
   };
