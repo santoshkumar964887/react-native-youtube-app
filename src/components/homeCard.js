@@ -1,10 +1,12 @@
 import React from "react";
 import { Text, View, Image, StyleSheet,Dimensions,TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import {useNavigation} from '@react-navigation/native';
 export default HomeCard = (props) => {
+  const navigation=useNavigation();
   return (
     <View> 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>navigation.navigate('player',{videoId:props.videoId,title:props.title})}>
       <View>
         <Image
           source={{
