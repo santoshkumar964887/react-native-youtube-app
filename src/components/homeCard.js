@@ -1,9 +1,10 @@
 import React from "react";
-import { Text, View, Image, StyleSheet,Dimensions } from "react-native";
+import { Text, View, Image, StyleSheet,Dimensions,TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 export default HomeCard = (props) => {
   return (
     <View> 
+      <TouchableOpacity>
       <View>
         <Image
           source={{
@@ -40,6 +41,7 @@ export default HomeCard = (props) => {
           }</Text>
         </View>
       </View>
+      </TouchableOpacity>
     </View>
   );
 };
