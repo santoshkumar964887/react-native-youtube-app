@@ -6,7 +6,7 @@ import SearchPage from "./src/page/Searchs";
 import Explore from "./src/page/Explore";
 import Player from "./src/page/Player";
 import Suscribe from "./src/page/Subscribe";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer,DarkTheme,DefaultTheme} from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from '@expo/vector-icons';
@@ -16,6 +16,24 @@ import {Reducer} from './src/redux/Reducer';
 const stack = createStackNavigator();
 const tab = createBottomTabNavigator();
 const store=createStore(Reducer);
+const customDarkTheme={
+  ...DarkTheme,
+  colors:{
+    ...DarkTheme.colors,
+    headerColor:"#404040",
+    iconColor:"white",
+    tabIcon:"white"
+  }
+};
+const customDefaultTheme={
+  ...DefaultTheme,
+  colors:{
+    ...DefaultTheme.colors,
+    headerColor:"#EEF0F1",
+    iconColor:"black",
+    tabIcon:"red"
+  }
+}
 const Root = () => {
   return (
     <tab.Navigator
@@ -49,7 +67,7 @@ const Root = () => {
 export default function App() {
   return (
     <Provider store={store}>
-    <NavigationContainer>
+    <NavigationContainer theme={customDarkTheme}>
       <stack.Navigator headerMode="none">
         <stack.Screen name="root" component={Root} />
         <stack.Screen name="search" component={SearchPage} />

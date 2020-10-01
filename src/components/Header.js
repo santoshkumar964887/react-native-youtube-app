@@ -4,11 +4,23 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import Constant from "expo-constants";
 import { FontAwesome } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useTheme } from "@react-navigation/native";
 export default Header = () => {
+  const { colors } = useTheme();
+  const headerBackgroundColor = colors.headerColor;
+  const iconColor = colors.iconColor;
   const navigation = useNavigation();
   return (
-    <View style={styles.headerContainer}>
+    <View
+      style={{
+        marginTop: Constant.statusBarHeight,
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        backgroundColor: headerBackgroundColor,
+        elevation: 6,
+      }}
+    >
       <View style={styles.leftIcon}>
         <FontAwesome5
           style={styles.youtubeIcon}
@@ -16,42 +28,32 @@ export default Header = () => {
           size={30}
           color="red"
         />
-        <Text style={styles.youtubeText}>YouTube</Text>
+        <Text
+          style={{ margin: 17, fontSize: 17,color:iconColor, fontWeight: "800", marginLeft: 0 }}
+        >
+          YouTube
+        </Text>
       </View>
       <View style={styles.rightIcons}>
-        <FontAwesome name="video-camera" size={26} color="#4A4D4F" />
+        <FontAwesome name="video-camera" size={26} color={iconColor} />
         <FontAwesome5
           onPress={() => {
-            navigation.navigate('search')
+            navigation.navigate("search");
           }}
           name="search"
           size={26}
-          color="#4A4D4F"
+          color={iconColor}
         />
-        <MaterialIcons name="account-circle" size={26} color="#4A4D4F" />
+        <MaterialIcons name="account-circle" size={26} color={iconColor} />
       </View>
     </View>
   );
 };
 const styles = StyleSheet.create({
-  headerContainer: {
-    marginTop: Constant.statusBarHeight,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    backgroundColor: "#EEF0F1",
-    elevation: 6,
-  },
   leftIcon: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-  },
-  youtubeText: {
-    margin: 17,
-    fontSize: 17,
-    fontWeight: "800",
-    marginLeft: 0,
   },
   youtubeIcon: {
     margin: 15,
