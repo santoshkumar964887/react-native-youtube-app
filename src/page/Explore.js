@@ -11,14 +11,17 @@ import Header from "../components/Header";
 import { useSelector } from "react-redux";
 import ExploreCard from "../components/ExploreCard";
 import HomeCard from "../components/homeCard";
+import { useTheme } from "@react-navigation/native";
 export default function Explore() {
   const state = useSelector((state) => {
     return state;
   });
+  const { colors } = useTheme();
+  const textColor = colors.iconColor;
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <Header />
-      <ScrollView >
+      <ScrollView>
         <View style={styles.cardContainer}>
           <ExploreCard name="Gaming" />
           <ExploreCard name="Trending" />
@@ -27,9 +30,22 @@ export default function Explore() {
           <ExploreCard name="Movies" />
           <ExploreCard name="Fashion" />
         </View>
-      
-      <Text style={styles.horzantialLine}>Trending videos this week</Text>
-      
+
+        <Text
+          style={{
+            borderBottomColor: "gray",
+            textAlign: "center",
+            fontSize: 14,
+            fontWeight: "700",
+            padding: 10,
+            color: textColor,
+            opacity: 0.8,
+            borderBottomWidth: 2,
+          }}
+        >
+          Trending videos this week
+        </Text>
+
         <FlatList
           data={state}
           renderItem={({ item }) => {
@@ -66,15 +82,5 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-around",
-  },
-  horzantialLine: {
-    borderBottomColor: "gray",
-    textAlign: "center",
-    fontSize: 14,
-    fontWeight: "700",
-    padding: 10,
-    color: "#212121",
-    opacity: 0.8,
-    borderBottomWidth: 2,
   },
 });
