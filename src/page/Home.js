@@ -12,7 +12,7 @@ import Header from "../components/Header";
 import { useSelector } from "react-redux";
 export default HomePage = () => {
   const state = useSelector((state) => {
-    return state;
+    return state.stateReducer;
   });
   return (
     <View>

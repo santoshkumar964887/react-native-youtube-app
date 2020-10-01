@@ -6,16 +6,21 @@ import SearchPage from "./src/page/Searchs";
 import Explore from "./src/page/Explore";
 import Player from "./src/page/Player";
 import Suscribe from "./src/page/Subscribe";
-import { NavigationContainer,DarkTheme,DefaultTheme} from "@react-navigation/native";
+import { NavigationContainer,DarkTheme,DefaultTheme,useTheme} from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from '@expo/vector-icons';
-import {createStore} from 'redux';
+import {createStore,combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 import {Reducer} from './src/redux/Reducer';
+import {ThemeReducer} from './src/redux/ThemeReducer';
 const stack = createStackNavigator();
 const tab = createBottomTabNavigator();
-const store=createStore(Reducer);
+const rootReducer= combineReducers({
+  stateReducer:Reducer,
+  themeReducer:ThemeReducer
+});
+const store=createStore(rootReducer);
 const customDarkTheme={
   ...DarkTheme,
   colors:{
@@ -35,6 +40,8 @@ const customDefaultTheme={
   }
 }
 const Root = () => {
+  const {colors}=useTheme();
+  const iconColor=colors.tabIcon;
   return (
     <tab.Navigator
       screenOptions={({ route }) => ({
@@ -54,8 +61,8 @@ const Root = () => {
         },
       })}
       tabBarOptions={{
-        activeTintColor: "red",
-        inactiveTintColor: "gray",
+        activeTintColor:iconColor,
+        inactiveTintColor:"gray",
       }}
     >
       <tab.Screen name="home" component={HomePage} />

@@ -14,7 +14,7 @@ import HomeCard from "../components/homeCard";
 import { useTheme } from "@react-navigation/native";
 export default function Explore() {
   const state = useSelector((state) => {
-    return state;
+    return state.stateReducer;
   });
   const { colors } = useTheme();
   const textColor = colors.iconColor;

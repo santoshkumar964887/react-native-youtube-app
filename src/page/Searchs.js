@@ -24,7 +24,7 @@ export default Search = () => {
   const [indicator, setIndicator] = useState(false);
   const dispatch=useDispatch();
   const results=useSelector(state=>{
-    return state;
+    return state.stateReducer;
   })
     const API_KEY="AIzaSyDHkXoVAssCrE2O5InS-nXr62oJRTXqs0E"
   const fetchingData = () => {
