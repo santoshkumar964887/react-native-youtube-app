@@ -17,7 +17,7 @@ export default HomePage = () => {
     return state.stateReducer;
   });
   useEffect(()=>{
-    
+    const API_KEY="AIzaSyANA9yKxcTtRniK_4jCEjUOi1S7ehuTfkc";
     fetch(
       `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=200&q=News&type=video&key=${API_KEY}`
     )
