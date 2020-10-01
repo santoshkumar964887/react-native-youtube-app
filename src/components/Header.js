@@ -5,8 +5,10 @@ import Constant from "expo-constants";
 import { FontAwesome } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation, useTheme } from "@react-navigation/native";
+import {useDispatch} from 'react-redux';
 export default Header = () => {
   const { colors } = useTheme();
+  const dispatch=useDispatch();
   const headerBackgroundColor = colors.headerColor;
   const iconColor = colors.iconColor;
   const navigation = useNavigation();
@@ -44,7 +46,7 @@ export default Header = () => {
           size={26}
           color={iconColor}
         />
-        <MaterialIcons name="account-circle" size={26} color={iconColor} />
+        <MaterialIcons onPress={()=>dispatch({type:"Change_Theme"})} name="account-circle" size={26} color={iconColor} />
       </View>
     </View>
   );

@@ -11,7 +11,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from '@expo/vector-icons';
 import {createStore,combineReducers} from 'redux';
-import {Provider} from 'react-redux';
+import {Provider,useSelector} from 'react-redux';
 import {Reducer} from './src/redux/Reducer';
 import {ThemeReducer} from './src/redux/ThemeReducer';
 const stack = createStackNavigator();
@@ -71,17 +71,30 @@ const Root = () => {
     </tab.Navigator>
   );
 };
+
 export default function App() {
   return (
     <Provider store={store}>
-    <NavigationContainer theme={customDarkTheme}>
+     <Myapp/>
+    </Provider>
+    
+  );
+}
+function Myapp() {
+     
+     const themeState=useSelector(state=>{
+       return state.themeReducer;
+     })
+  return (
+    
+    <NavigationContainer theme={themeState?customDarkTheme:customDefaultTheme}>
       <stack.Navigator headerMode="none">
         <stack.Screen name="root" component={Root} />
         <stack.Screen name="search" component={SearchPage} />
         <stack.Screen name="player" component={Player} />
       </stack.Navigator>
     </NavigationContainer>
-    </Provider>
+    
     
   );
 }
