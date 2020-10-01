@@ -12,11 +12,14 @@ import {
 import Constant from "expo-constants";
 import { MaterialIcons, Ionicons, Feather } from "@expo/vector-icons";
 import SearchCard from "../components/SearchCard";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation,useTheme } from '@react-navigation/native';
 import {useDispatch,useSelector} from 'react-redux';
 export default Search = () => {
   const [text, setText] = useState("");
   const navigation = useNavigation();
+  const { colors } = useTheme();
+  const headerBackgroundColor = colors.headerColor;
+  const iconColor = colors.iconColor;
   //const [results, setresult] = useState([]);
   const [indicator, setIndicator] = useState(false);
   const dispatch=useDispatch();
@@ -40,13 +43,17 @@ export default Search = () => {
   };
   return (
     <View style={styles.searchContainer}>
-      <View style={styles.header}>
+      <View style={{display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    backgroundColor:headerBackgroundColor,
+    elevation: 6}}>
         <View style={styles.headerleft}>
           <MaterialIcons
             style={styles.arrow}
             name="keyboard-backspace"
             size={33}
-            color="black"
+            color={iconColor}
             onPress={() => {
               navigation.goBack();
             }}
@@ -66,13 +73,13 @@ export default Search = () => {
             style={styles.headerRightIcon}
             name="send"
             size={24}
-            color="black"
+            color={iconColor}
           />
           <Ionicons
             style={styles.headerRightIcon}
             name="md-mic"
             size={24}
-            color="black"
+            color={iconColor}
           />
         </View>
       </View>
@@ -99,13 +106,7 @@ const styles = StyleSheet.create({
   searchContainer: {
     marginTop: Constant.statusBarHeight + 10,
   },
-  header: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    backgroundColor: "#EEF0F1",
-    elevation: 6,
-  },
+
   headerleft: {
     display: "flex",
     flexDirection: "row",
@@ -115,8 +116,8 @@ const styles = StyleSheet.create({
     marginTop: 3,
   },
   searchHeader: {
-    padding: 10,
-    width: "160%",
+    padding:10,
+    width:220,
     height: 40,
     margin: 3,
     borderRadius: 3,
