@@ -26,7 +26,7 @@ export default Search = () => {
   const results=useSelector(state=>{
     return state.stateReducer;
   })
-    const API_KEY="AIzaSyANA9yKxcTtRniK_4jCEjUOi1S7ehuTfkc";
+    
   const fetchingData = () => {
     setIndicator(true);
     fetch(
