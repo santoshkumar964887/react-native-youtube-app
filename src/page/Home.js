@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import {
   View,
   Text,
@@ -9,17 +9,34 @@ import {
 } from "react-native";
 import HomeCard from "../components/homeCard";
 import Header from "../components/Header";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 export default HomePage = () => {
+  const dispatch=useDispatch();
+  const[data,setData]=useState([]);
   const state = useSelector((state) => {
     return state.stateReducer;
   });
+  useEffect(()=>{
+    
+    fetch(
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=200&q=News&type=video&key=${API_KEY}`
+    )
+      .then((res) => res.json())
+      .then((res2) => {
+        
+        dispatch({type:'Add_Search',payload:res2.items});
+        setData(res2.items);
+       
+        
+      });
+  },[])
+ const result= state.length>0?state:data;
   return (
     <View>
       <Header />
       <SafeAreaView>
         <FlatList
-          data={state}
+          data={result}
           renderItem={({ item }) => {
             return (
               <HomeCard
